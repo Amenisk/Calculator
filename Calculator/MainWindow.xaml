@@ -1,0 +1,102 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="10">
+            <TextBlock x:Name="tbAction" Height="100" FontSize="24" TextAlignment="Right"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="10">
+            <TextBlock x:Name="tbAnswer" Height="100" FontSize="32" TextAlignment="Right"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5">
+            <RadioButton x:Name ="rbGraduce" Content="Градусы" FontSize="28" VerticalAlignment="Center" Margin="5"/>
+            <RadioButton Content="Радианы" IsChecked="True" FontSize="28" VerticalAlignment="Center" Margin="100 5 5 5"/>
+        </StackPanel>
+        <Button Grid.Row="2" Grid.Column="5" FontSize="28" Margin="5">MC</Button>
+        <Button Grid.Row="2" Grid.Column="6" FontSize="28" Margin="5">MR</Button>
+        <Button Grid.Row="2" Grid.Column="7" FontSize="28" Margin="5">MS</Button>
+        <Button Grid.Row="2" Grid.Column="8" FontSize="28" Margin="5">M+</Button>
+        <Button Grid.Row="2" Grid.Column="9" FontSize="28" Margin="5">M-</Button>
+
+        <Button Grid.Row="3" Grid.Column="0" Margin="5"></Button>
+        <Button x:Name="btn31" Grid.Row="3" Grid.Column="1" FontSize="28" Margin="5,5,5,0" Height="38">Inv</Button>
+        <Button x:Name="btn32" Grid.Row="3" Grid.Column="2" FontSize="28" Margin="5" Click="OperateWithFunction">ln</Button>
+        <Button x:Name="btn33" Grid.Row="3" Grid.Column="3" FontSize="28" Margin="5" Click="Button_Click">(</Button>
+        <Button x:Name="btn34" Grid.Row="3" Grid.Column="4" FontSize="28" Margin="5" Click="Button_Click">)</Button>
+        <Button x:Name="btn35" Grid.Row="3" Grid.Column="5" FontSize="28" Margin="5" Click="DeleteOneSymbol">←</Button>
+        <Button x:Name="btn36" Grid.Row="3" Grid.Column="6" FontSize="28" Margin="5" Click="FullResetToZero">CE</Button>
+        <Button x:Name="btn37" Grid.Row="3" Grid.Column="7" FontSize="28" Margin="5" Click="ResetToZero">C</Button>
+        <Button x:Name="btn38" Grid.Row="3" Grid.Column="8" FontSize="28" Margin="5" Click="Button_Click_1" >±</Button>
+        <Button x:Name="btn39" Grid.Row="3" Grid.Column="9" FontSize="28" Margin="5" Click="OperateWithRoot">√</Button>
+
+        <Button x:Name="btn40" Grid.Row="4" Grid.Column="0" FontSize="28" Margin="5">Int</Button>
+        <Button x:Name="btn41" Grid.Row="4" Grid.Column="1" FontSize="28" Margin="5" Click="OperateWithFunction">sinh</Button>
+        <Button x:Name="btn42" Grid.Row="4" Grid.Column="2" FontSize="28" Margin="5" Click="OperateWithFunction">sin</Button>
+        <Button x:Name="btn43" Grid.Row="4" Grid.Column="3" FontSize="28" Margin="5" Click="OperateWithDegree">x²</Button>
+        <Button x:Name="btn44" Grid.Row="4" Grid.Column="4" FontSize="28" Margin="5" Click="Factorial">n!</Button>
+        <Button x:Name="btn45" Grid.Row="4" Grid.Column="5" FontSize="28" Margin="5" Click="Button_Click">7</Button>
+        <Button x:Name="btn46" Grid.Row="4" Grid.Column="6" FontSize="28" Margin="5" Click="Button_Click">8</Button>
+        <Button x:Name="btn47" Grid.Row="4" Grid.Column="7" FontSize="28" Margin="5" Click="Button_Click">9</Button>
+        <Button x:Name="btn48" Grid.Row="4" Grid.Column="8" FontSize="28" Margin="5" Click="OperateWithTwoNumbers">/</Button>
+        <Button x:Name="btn49" Grid.Row="4" Grid.Column="9" FontSize="28" Margin="5" Click="OperateWithTwoNumbers">%</Button>
+
+        <Button x:Name="btn50" Grid.Row="5" Grid.Column="0" FontSize="28" Margin="5">dms</Button>
+        <Button x:Name="btn51" Grid.Row="5" Grid.Column="1" FontSize="28" Margin="5" Click="OperateWithFunction">cosh</Button>
+        <Button x:Name="btn52" Grid.Row="5" Grid.Column="2" FontSize="28" Margin="5" Click="OperateWithFunction">cos</Button>
+        <Button x:Name="btn53" Grid.Row="5" Grid.Column="3" FontSize="28" Margin="5" Click="OperateWithDegree">xᵞ</Button>
+        <Button x:Name="btn54" Grid.Row="5" Grid.Column="4" FontSize="28" Margin="5" Click="OperateWithRoot">ᵞ√x</Button>
+        <Button x:Name="btn55" Grid.Row="5" Grid.Column="5" FontSize="28" Margin="5" Click="Button_Click">4</Button>
+        <Button x:Name="btn56" Grid.Row="5" Grid.Column="6" FontSize="28" Margin="5" Click="Button_Click">5</Button>
+        <Button x:Name="btn57" Grid.Row="5" Grid.Column="7" FontSize="28" Margin="5" Click="Button_Click">6</Button>
+        <Button x:Name="btn58" Grid.Row="5" Grid.Column="8" FontSize="28" Margin="5" Click="OperateWithTwoNumbers">*</Button>
+        <Button x:Name="btn59" Grid.Row="5" Grid.Column="9" FontSize="28" Margin="5" Click="OperateWithOneNumber">1/x</Button>
+
+        <Button x:Name="btn60" Grid.Row="6" Grid.Column="0" FontSize="28" Margin="5" Click="Button_Click">π</Button>
+        <Button x:Name="btn61" Grid.Row="6" Grid.Column="1" FontSize="28" Margin="5" Click="OperateWithFunction">tanh</Button>
+        <Button x:Name="btn62" Grid.Row="6" Grid.Column="2" FontSize="28" Margin="5" Click="OperateWithFunction">tan</Button>
+        <Button x:Name="btn63" Grid.Row="6" Grid.Column="3" FontSize="28" Margin="5" Click="OperateWithDegree">x³</Button>
+        <Button x:Name="btn64" Grid.Row="6" Grid.Column="4" FontSize="28" Margin="5" Click="OperateWithRoot">∛x</Button>
+        <Button x:Name="btn65" Grid.Row="6" Grid.Column="5" FontSize="28" Margin="5" Click="Button_Click">1</Button>
+        <Button x:Name="btn66" Grid.Row="6" Grid.Column="6" FontSize="28" Margin="5" Click="Button_Click">2</Button>
+        <Button x:Name="btn67" Grid.Row="6" Grid.Column="7" FontSize="28" Margin="5" Click="Button_Click">3</Button>
+        <Button x:Name="btn68" Grid.Row="6" Grid.Column="8" FontSize="28" Margin="5" Click="OperateWithTwoNumbers">-</Button>
+        <Button x:Name="btn69" Grid.Row="6" Grid.RowSpan="2" Grid.Column="9" FontSize="28" Margin="5" Click="GetAnswer">=</Button>
+
+        <Button x:Name="btn70" Grid.Row="7" Grid.Column="0" FontSize="28" Margin="5">F-E</Button>
+        <Button x:Name="btn71" Grid.Row="7" Grid.Column="1" FontSize="28" Margin="5" Click="OperateWithFunction">Exp</Button>
+        <Button x:Name="btn72" Grid.Row="7" Grid.Column="2" FontSize="28" Margin="5" Click="OperateWithTwoNumbers">Mod</Button>
+        <Button x:Name="btn73" Grid.Row="7" Grid.Column="3" FontSize="28" Margin="5" Click="Log">log</Button>
+        <Button x:Name="btn74" Grid.Row="7" Grid.Column="4" FontSize="28" Margin="5" Click="OperateWithOneNumber">10ˣ</Button>
+        <Button x:Name="btn75" Grid.Row="7" Grid.Column="5" Grid.ColumnSpan="2" FontSize="28" Margin="5" Click="Button_Click">0</Button>
+        <Button x:Name="btn77" Grid.Row="7" Grid.Column="7" FontSize="28" Margin="5" Click="Button_Click">,</Button>
+        <Button x:Name="btn78" Grid.Row="7" Grid.Column="8" FontSize="28" Margin="5" Click="OperateWithTwoNumbers">+</Button>
+    </Grid>
+</Window>
