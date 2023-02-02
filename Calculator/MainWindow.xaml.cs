@@ -261,7 +261,7 @@ namespace Calculator
                         {
                             number = Math.PI;
                         }
-                        _number += number;
+                        _number -= number;
                         tbAnswer.Text = _number.ToString();
                         tbAction.Text += number;
                     }
@@ -344,15 +344,8 @@ namespace Calculator
                     break;
 
                 case "ln":
-                    if(_number > 0)
-                    {
-                        _number = Math.Log(_number);
-                        tbAnswer.Text = _number.ToString();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Аргумент натурального логарифма должен быть больше 0!");
-                    }
+                    _number = Math.Log(_number);
+                    tbAnswer.Text = _number.ToString();
                     break;
 
                 case "sin":
