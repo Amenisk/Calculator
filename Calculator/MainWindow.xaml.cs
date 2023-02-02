@@ -187,7 +187,10 @@ namespace Calculator
             }
             else WriteErrorMessage();
 
-            GetAnswer(sender, e);
+            if (_action != "xᵞ")
+            {
+                GetAnswer(sender, e);
+            }
         }
 
         private void OperateWithRoot(object sender, RoutedEventArgs e)
@@ -209,7 +212,10 @@ namespace Calculator
             }
             else WriteErrorMessage();
 
-            GetAnswer(sender, e);
+            if(_action != "ᵞ√x")
+            {
+                GetAnswer(sender, e);
+            }
         }
 
         private void Factorial(object sender, RoutedEventArgs e)
@@ -350,51 +356,40 @@ namespace Calculator
                     break;
 
                 case "sin":
+                    PrepareForTrigFunc();
                     _number = Math.Sin(_number);
-                    if (rbGraduce.IsChecked == true)
-                        tbAnswer.Text = (_number * 180 / Math.PI).ToString();
-                    else
-                        tbAnswer.Text = _number.ToString();
+                    tbAnswer.Text = _number.ToString();   
                     break;
 
                 case "cos":
+                    PrepareForTrigFunc();
                     _number = Math.Cos(_number);
-                    if (rbGraduce.IsChecked == true)
-                        tbAnswer.Text = (_number * 180 / Math.PI).ToString();
-                    else
-                        tbAnswer.Text = _number.ToString();
+                    tbAnswer.Text = _number.ToString();
                     break;
 
+
                 case "tan":
+                    PrepareForTrigFunc();
                     _number = Math.Tan(_number);
-                    if (rbGraduce.IsChecked == true)
-                        tbAnswer.Text = (_number * 180 / Math.PI).ToString();
-                    else
-                        tbAnswer.Text = _number.ToString();
+                    tbAnswer.Text = _number.ToString();
                     break;
 
                 case "sinh":
+                    PrepareForTrigFunc();
                     _number = Math.Sinh(_number);
-                    if (rbGraduce.IsChecked == true)
-                        tbAnswer.Text = (_number * 180 / Math.PI).ToString();
-                    else
-                        tbAnswer.Text = _number.ToString();
+                    tbAnswer.Text = _number.ToString();
                     break;
 
                 case "cosh":
+                    PrepareForTrigFunc();
                     _number = Math.Cosh(_number);
-                    if (rbGraduce.IsChecked == true)
-                        tbAnswer.Text = (_number * 180 / Math.PI).ToString();
-                    else
-                        tbAnswer.Text = _number.ToString();
+                    tbAnswer.Text = _number.ToString();
                     break;
 
                 case "tanh":
+                    PrepareForTrigFunc();
                     _number = Math.Tanh(_number);
-                    if (rbGraduce.IsChecked == true)
-                        tbAnswer.Text = (_number * 180 / Math.PI).ToString();
-                    else
-                        tbAnswer.Text = _number.ToString();
+                    tbAnswer.Text = _number.ToString();
                     break;
 
                 case "Exp":
@@ -443,7 +438,7 @@ namespace Calculator
                     break;
 
                 case "∛x":
-                    _number = Math.Pow(_number, 1.0/3.0);
+                    _number = Math.Pow(_number, 1.0/3);
                     tbAnswer.Text = _number.ToString();
                     tbAction.Text = 3 + tbAction.Text;
                     break;
@@ -489,11 +484,6 @@ namespace Calculator
                 case "1/x":
                     if(double.TryParse(tbAnswer.Text, out number) || tbAnswer.Text == "π")
                     {
-                        if(number == 0)
-                        {
-                            MessageBox.Show("Число не должно быть равно 0!");
-                            return;
-                        }
                         if (tbAnswer.Text == "π")
                         {
                             number = Math.PI;
@@ -527,11 +517,20 @@ namespace Calculator
                     else WriteErrorMessage();
                     break;
             }
+            _action = "";
         }
 
         private void WriteErrorMessage()
         {
             MessageBox.Show("Некорректные данные!");
+        }
+
+        private void PrepareForTrigFunc()
+        {
+            if (rbGraduce.IsChecked == true)
+            {
+                _number *= Math.PI / 180;
+            }
         }
     }
 }
